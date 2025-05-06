@@ -46,7 +46,7 @@ namespace PagarEmprestimo.Model
 
         public static Divida ObterDividaPorId(int id)
         {
-            var divida = dividas.FirstOrDefault(d => d.Id == id);
+            var divida = dividas.FirstOrDefault(d => d.Id == id); 
             if (divida != null)
             {
                 divida.CalcularJuros();

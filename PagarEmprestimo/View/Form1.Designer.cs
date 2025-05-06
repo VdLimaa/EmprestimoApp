@@ -66,7 +66,7 @@
             this.dgv_emprestimos.Name = "dgv_emprestimos";
             this.dgv_emprestimos.Size = new System.Drawing.Size(776, 177);
             this.dgv_emprestimos.TabIndex = 2;
-            this.dgv_emprestimos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_emprestimos_CellContentClick);
+            //this.dgv_emprestimos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_emprestimos_CellContentClick);
             // 
             // btn_pagar
             // 
