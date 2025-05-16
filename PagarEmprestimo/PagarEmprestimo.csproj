@@ -47,6 +47,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Sistema.cs" />
+    <Compile Include="View\FormCadastrarEmprestimo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCadastrarEmprestimo.Designer.cs">
+      <DependentUpon>FormCadastrarEmprestimo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMenu.Designer.cs">
+      <DependentUpon>FormMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Emprestimo.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="View\Form1.cs">
@@ -57,6 +69,9 @@
     </Compile>
     <Compile Include="View\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\FormMenu.resx">
+      <DependentUpon>FormMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

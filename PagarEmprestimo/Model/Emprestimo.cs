@@ -8,31 +8,31 @@ namespace PagarEmprestimo.Model
 {
     public class Emprestimo
     {
-        public string Credor { get; set; }
-        public string Devedor { get; set; }
-        public decimal Valor { get; set; }
+        public Usuario Credor { get; set; }
+        public Usuario Devedor { get; set; }
+        public float Valor { get; set; }
         public DateTime DataEmprestimo { get; set; }
         public bool Pago { get; set; }
 
-        public Emprestimo(string credor, string devedor, decimal valor)
+        public Emprestimo(Usuario credor, Usuario devedor, float valor, DateTime dataEmprestimo)
         {
             Credor = credor;
             Devedor = devedor;
             Valor = valor;
-            DataEmprestimo = DateTime.Now.AddDays(-45); // valor fictício
+            DataEmprestimo = dataEmprestimo;
             Pago = false;
         }
 
-        public decimal CalcularValorAtualizado()
+        public float CalcularValorAtualizado()
         {
             var dias = (DateTime.Now - DataEmprestimo).Days;
-            if (dias <= 0) return Valor;
+            if (dias <= 0) return (float)Valor;
 
-            var jurosDiarios = dias * 0.001m; // 0.1% ao dia
-            var juros30Dias = (dias / 30) * 0.10m; // 10% a cada 30 dias
+            var jurosDiarios = dias * 0.001f; 
+            var juros30Dias = (dias / 30) * 0.10f; 
 
-            var valorAtualizado = Valor * (1 + jurosDiarios + juros30Dias);
-            return Math.Round(valorAtualizado, 2);
+            var valorAtualizado = (float)(Valor * (1 + jurosDiarios + juros30Dias));
+            return (float)Math.Round(valorAtualizado, 2);
         }
     }
 }

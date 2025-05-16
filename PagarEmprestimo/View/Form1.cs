@@ -85,11 +85,11 @@ namespace PagarEmprestimo
             int index = dgv_emprestimos.SelectedRows[0].Index;
             Emprestimo emprestimo = listaAtual[index];
 
-            // Chamada atualizada passando credor, senha e empréstimo
-            if (service.ProcessarPagamento(credor, senha, emprestimo))
+            
+            if (service.ProcessarPagamento(senha, emprestimo))
             {
                 MessageBox.Show("Pagamento realizado com sucesso!");
-                btn_buscar.PerformClick(); // Atualiza lista
+                btn_buscar.PerformClick(); 
             }
             else
             {
