@@ -17,16 +17,17 @@ namespace PagarEmprestimo
 {
     public partial class Form1 : Form
     {
-        private Sistema service;
+        private Sistema sistema;
         private List<Emprestimo> listaAtual;
 
-        public Form1()
+        public Form1(Sistema sistema)
         {
             InitializeComponent();
-            service = new Sistema();
+            this.sistema = sistema;
 
             dgv_emprestimos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_emprestimos.MultiSelect = false;
+
 
         }
 
@@ -41,7 +42,7 @@ namespace PagarEmprestimo
                 return;
             }
 
-            listaAtual = service.ObterDividas(credor, devedor);
+            listaAtual = sistema.ObterDividas(credor, devedor);
 
             if (listaAtual.Count == 0)
             {
@@ -86,7 +87,7 @@ namespace PagarEmprestimo
             Emprestimo emprestimo = listaAtual[index];
 
             
-            if (service.ProcessarPagamento(senha, emprestimo))
+            if (sistema.ProcessarPagamento(senha, emprestimo))
             {
                 MessageBox.Show("Pagamento realizado com sucesso!");
                 btn_buscar.PerformClick(); 

@@ -52,7 +52,7 @@ namespace PagarEmprestimo.Controller
         public bool ProcessarPagamento(string senha, Emprestimo emprestimo)
         {
             bool assinaturaValida2 = emprestimo.Credor.Senha == senha;
-            3632
+            
             if (!assinaturaValida2)
             {
                 return false; 
@@ -74,6 +74,24 @@ namespace PagarEmprestimo.Controller
             }
 
             return false; 
+        }
+
+        public string CadastrarEmprestimo(string nomeCredor, string nomeDevedor, float valor, DateTime data, string senhaDevedor)
+        {
+            var credor = usuarios.FirstOrDefault(u => u.Nome == nomeCredor);
+            var devedor = usuarios.FirstOrDefault(u => u.Nome == nomeDevedor);
+
+            if (credor == null || devedor == null)
+                return "Credor ou devedor não encontrado.";
+
+            if (credor.Nome == devedor.Nome)
+                return "Credor e devedor não podem ser a mesma pessoa.";
+
+            if (devedor.Senha != senhaDevedor)
+                return "Senha do devedor incorreta.";
+
+            emprestimos.Add(new Emprestimo(credor, devedor, valor, data));
+            return "Empréstimo cadastrado com sucesso!";
         }
     }
 }
